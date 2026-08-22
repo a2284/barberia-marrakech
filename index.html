@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbería Marrakech | Reservas</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        gold: {
+          400: "#f5c542",
+          500: "#d9a928",
+          600: "#b88917"
+        }
+      },
+      fontFamily: {
+        display: ["Georgia", "serif"]
+      }
+    }
+  }
+};
+</script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(217,169,40,.08),
+      transparent 28%
+    ),
+    #080808;
+}
+
+.gold-gradient {
+  background: linear-gradient(
+    135deg,
+    #ffe27a,
+    #d9a928 45%,
+    #8f6810
+  );
+}
+
+.gold-text {
+  background: linear-gradient(
+    135deg,
+    #fff0b8,
+    #f5c542 45%,
+    #b88917
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(20,20,20,.82);
+  backdrop-filter: blur(16px);
+}
+
+.input-dark {
+  background: #111;
+  border: 1px solid #2d2d2d;
+  color: #f5f5f5;
+}
+
+.input-dark:focus {
+  outline: none;
+  border-color: #d9a928;
+  box-shadow: 0 0 0 3px rgba(217,169,40,.1);
+}
+
+.service-card {
+  transition: .2s;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(217,169,40,.65);
+}
+
+.service-card.selected {
+  border-color: #d9a928;
+  background: rgba(217,169,40,.09);
+}
+
+.tab-active {
+  background: linear-gradient(
+    135deg,
+    #f5c542,
+    #b88917
+  );
+  color: #090909;
+}
+</style>
+</head>
+
+<body class="min-h-screen text-white font-sans">
+
+<header class="border-b border-white/10 bg-black/70 backdrop-blur-xl sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+
+    <button onclick="scrollToId('inicio')" class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-full border border-gold-500/60 flex items-center justify-center gold-gradient text-black">
+        ✂
+      </div>
+
+      <div>
+        <div class="font-display text-xl">BARBERÍA</div>
+        <div class="text-[10px] tracking-[.35em] text-gold-400">
+          MARRAKECH
+        </div>
+      </div>
+    </button>
+
+    <nav class="hidden md:flex gap-7 text-sm text-gray-400">
+      <button onclick="scrollToId('inicio')">Inicio</button>
+      <button onclick="scrollToId('servicios')">Servicios</button>
+      <button onclick="scrollToId('reservas')">Reservas</button>
+    </nav>
+
+    <button
+      onclick="showView('barbero')"
+      class="hidden sm:block px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm"
+    >
+      Acceso Barbero
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+<section id="inicio">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+
+    <div class="max-w-3xl">
+
+      <div class="inline-flex items-center gap-2 border border-gold-500/20 bg-gold-500/5 rounded-full px-4 py-2 text-xs text-gold-300 mb-7">
+        ● DESDE 2012 · BARBERÍA CLÁSICA
+      </div>
+
+      <h1 class="font-display text-5xl md:text-7xl leading-[.95]">
+        El arte del
+        <span class="gold-text italic">
+          corte clásico.
+        </span>
+      </h1>
+
+      <p class="mt-7 text-gray-400 text-lg max-w-2xl">
+        Cortes precisos, barba a navaja y el ambiente de una barbería tradicional.
+        Reserva tu próxima visita en menos de un minuto.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3">
+
+        <button
+          onclick="scrollToId('reservas')"
+          class="gold-gradient text-black font-semibold px-7 py-3.5 rounded-xl"
+        >
+          Reservar Cita
+        </button>
+
+        <button
+          onclick="scrollToId('servicios')"
+          class="px-7 py-3.5 rounded-xl border border-white/10 bg-white/5"
+        >
+          Ver servicios
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="servicios" class="border-t border-white/5 bg-[#0b0b0b]">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+
+    <div class="mb-10">
+      <div class="text-gold-400 text-xs tracking-[.3em] uppercase mb-3">
+        Nuestra carta
+      </div>
+
+      <h2 class="font-display text-4xl">
+        Servicios
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4">
+
+      <div class="rounded-2xl border border-white/10 bg-[#111] p-6">
+        <h3 class="font-display text-2xl">
+          Corte
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-2">
+          Corte clásico o moderno adaptado a tu estilo.
+        </p>
+
+        <div class="mt-6 text-gold-400 font-semibold">
+          15 € · 30 min
+        </div>
+      </div>
+
+
+      <div class="rounded-2xl border border-white/10 bg-[#111] p-6">
+        <h3 class="font-display text-2xl">
+          Barba
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-2">
+          Perfilado, arreglo y acabado profesional.
+        </p>
+
+        <div class="mt-6 text-gold-400 font-semibold">
+          10 € · 20 min
+        </div>
+      </div>
+
+
+      <div class="rounded-2xl border border-white/10 bg-[#111] p-6">
+        <h3 class="font-display text-2xl">
+          Combo
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-2">
+          Corte y barba para salir completamente renovado.
+        </p>
+
+        <div class="mt-6 text-gold-400 font-semibold">
+          22 € · 50 min
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="reservas" class="border-t border-white/5">
+
+<div class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+
+  <div class="text-center mb-10">
+
+    <div class="text-gold-400 text-xs tracking-[.3em] uppercase mb-3">
+      Reserva online
+    </div>
+
+    <h2 class="font-display text-4xl">
+      Tu próxima visita
+    </h2>
+
+  </div>
+
+
+  <div class="max-w-2xl mx-auto p-1.5 rounded-2xl bg-[#111] border border-white/10 grid grid-cols-2 mb-8">
+
+    <button
+      id="clientTab"
+      onclick="showView('cliente')"
+      class="tab-active rounded-xl py-3.5 font-semibold"
+    >
+      Reservar Cita
+      <span class="hidden sm:inline">
+        (Cliente)
+      </span>
+    </button>
+
+    <button
+      id="barberTab"
+      onclick="showView('barbero')"
+      class="rounded-xl py-3.5 font-semibold text-gray-400"
+    >
+      Acceso Barbero
+      <span class="hidden sm:inline">
+        (Personal)
+      </span>
+    </button>
+
+  </div>
+
+
+  <div id="clienteView" class="max-w-2xl mx-auto">
+
+    <form
+      id="bookingForm"
+      class="glass border border-white/10 rounded-3xl p-5 sm:p-8"
+    >
+
+      <label class="block text-sm font-medium mb-3">
+        1. Elige tu servicio
+      </label>
+
+
+      <div class="grid grid-cols-3 gap-2">
+
+        <button
+          type="button"
+          class="service-card rounded-xl border border-white/10 bg-[#111] p-4 text-left"
+          data-service="Corte"
+          onclick="selectService(this)"
+        >
+          <b>Corte</b>
+          <div class="text-gold-400 mt-2">
+            15 €
+          </div>
+          <small class="text-gray-600">
+            30 min
+          </small>
+        </button>
+
+
+        <button
+          type="button"
+          class="service-card rounded-xl border border-white/10 bg-[#111] p-4 text-left"
+          data-service="Barba"
+          onclick="selectService(this)"
+        >
+          <b>Barba</b>
+          <div class="text-gold-400 mt-2">
+            10 €
+          </div>
+          <small class="text-gray-600">
+            20 min
+          </small>
+        </button>
+
+
+        <button
+          type="button"
+          class="service-card rounded-xl border border-white/10 bg-[#111] p-4 text-left"
+          data-service="Combo"
+          onclick="selectService(this)"
+        >
+          <b>Combo</b>
+          <div class="text-gold-400 mt-2">
+            22 €
+          </div>
+          <small class="text-gray-600">
+            50 min
+          </small>
+        </button>
+
+      </div>
+
+
+      <input
+        id="service"
+        type="hidden"
+        required
+      >
+
+
+      <div class="grid sm:grid-cols-2 gap-4 mt-7">
+
+        <div>
+          <label class="text-sm">
+            Fecha
+          </label>
+
+          <input
+            id="date"
+            type="date"
+            required
+            class="input-dark w-full rounded-xl px-4 py-3 mt-2"
+          >
+        </div>
+
+
+        <div>
+
+          <label class="text-sm">
+            Hora
+          </label>
+
+          <select
+            id="time"
+            required
+            class="input-dark w-full rounded-xl px-4 py-3 mt-2"
+          ></select>
+
+        </div>
+
+      </div>
+
+
+      <div class="mt-7 pt-7 border-t border-white/10">
+
+        <label class="block text-sm mb-3">
+          2. Tus datos
+        </label>
+
+        <div class="space-y-4">
+
+          <input
+            id="name"
+            required
+            maxlength="100"
+            placeholder="Nombre completo"
+            class="input-dark w-full rounded-xl px-4 py-3"
+          >
+
+          <input
+            id="phone"
+            required
+            maxlength="20"
+            type="tel"
+            placeholder="Teléfono"
+            class="input-dark w-full rounded-xl px-4 py-3"
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="w-full gold-gradient text-black font-bold rounded-xl py-4 mt-7"
+      >
+        Confirmar Cita
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <div id="barberoView" class="hidden max-w-4xl mx-auto">
+
+
+    <div
+      id="barberLogin"
+      class="max-w-md mx-auto glass border border-white/10 rounded-3xl p-7 sm:p-8"
+    >
+
+      <h3 class="font-display text-3xl">
+        Acceso Personal
+      </h3>
+
+      <p class="text-gray-500 text-sm mt-2">
+        Introduce el PIN para acceder a la agenda.
+      </p>
+
+
+      <form id="pinForm">
+
+        <input
+          id="pin"
+          type="password"
+          inputmode="numeric"
+          maxlength="4"
+          placeholder="••••"
+          class="input-dark w-full rounded-xl px-4 py-3 mt-5 text-center text-xl tracking-[.5em]"
+        >
+
+        <div
+          id="pinError"
+          class="hidden text-red-400 text-sm mt-3 text-center"
+        >
+          PIN incorrecto.
+        </div>
+
+
+        <button
+          class="w-full gold-gradient text-black font-bold rounded-xl py-3.5 mt-5"
+        >
+          Entrar en la Agenda
+        </button>
+
+      </form>
+
+
+      <div class="text-center text-xs text-gray-600 mt-5">
+        PIN predeterminado:
+        <span class="text-gray-400">
+          1234
+        </span>
+      </div>
+
+    </div>
+
+
+    <div id="barberDashboard" class="hidden">
+
+      <div class="flex flex-col sm:flex-row justify-between gap-4 mb-7">
+
+        <div>
+
+          <div class="text-gold-400 text-xs tracking-[.3em] uppercase">
+            Panel de control
+          </div>
+
+          <h3 class="font-display text-4xl mt-2">
+            Agenda del Barbero
+          </h3>
+
+          <p
+            id="agendaSummary"
+            class="text-gray-500 text-sm mt-2"
+          ></p>
+
+        </div>
+
+
+        <button
+          onclick="logout()"
+          class="px-4 py-2.5 rounded-xl border border-white/10 text-sm"
+        >
+          Cerrar sesión
+        </button>
+
+      </div>
+
+
+      <div class="rounded-2xl border border-white/10 bg-[#111] p-4 mb-5 flex flex-col sm:flex-row gap-3">
+
+        <input
+          id="filterDate"
+          type="date"
+          onchange="renderAppointments()"
+          class="input-dark flex-1 rounded-xl px-4 py-3"
+        >
+
+        <button
+          onclick="today()"
+          class="px-5 py-3 rounded-xl border border-white/10 bg-white/5"
+        >
+          Hoy
+        </button>
+
+      </div>
+
+
+      <div class="grid grid-cols-3 gap-3 mb-5">
+
+        <div class="rounded-2xl border border-white/10 bg-[#111] p-4">
+          <small class="text-gray-500">
+            Total
+          </small>
+
+          <div id="total" class="text-2xl mt-1">
+            0
+          </div>
+        </div>
+
+
+        <div class="rounded-2xl border border-white/10 bg-[#111] p-4">
+
+          <small class="text-gray-500">
+            Pendientes
+          </small>
+
+          <div id="pending" class="text-2xl mt-1 text-gold-400">
+            0
+          </div>
+
+        </div>
+
+
+        <div class="rounded-2xl border border-white/10 bg-[#111] p-4">
+
+          <small class="text-gray-500">
+            Completadas
+          </small>
+
+          <div id="completed" class="text-2xl mt-1 text-green-400">
+            0
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="appointments"
+        class="space-y-3"
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<div
+  id="modal"
+  class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+>
+
+  <div class="w-full max-w-md rounded-3xl bg-[#111] border border-white/10 p-7">
+
+    <div class="text-green-400 text-center text-4xl">
+      ✓
+    </div>
+
+    <h3 class="font-display text-3xl text-center mt-4">
+      ¡Cita confirmada!
+    </h3>
+
+    <div
+      id="summary"
+      class="rounded-2xl bg-black/50 p-5 mt-6 text-sm leading-8"
+    ></div>
+
+    <button
+      onclick="closeModal()"
+      class="w-full gold-gradient text-black font-bold rounded-xl py-3.5 mt-6"
+    >
+      Perfecto
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer class="border-t border-white/5 bg-black">
+
+  <div class="max-w-6xl mx-auto px-4 py-10 text-sm text-gray-500">
+
+    <div class="font-display text-xl text-white">
+      BARBERÍA MARRAKECH
+    </div>
+
+    <div class="mt-2">
+      Calle Medina, 14 · 10:00 – 20:30 · +34 600 000 000
+    </div>
+
+    <div class="mt-6 text-xs text-gray-700">
+      © <span id="year"></span> Barbería Marrakech
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const KEY = "barberia_marrakech_appointments";
+
+const SERVICES = {
+  Corte: {
+    price: 15,
+    duration: 30
+  },
+  Barba: {
+    price: 10,
+    duration: 20
+  },
+  Combo: {
+    price: 22,
+    duration: 50
+  }
+};
+
+
+const getAppointments = () => {
+  try {
+    return JSON.parse(
+      localStorage.getItem(KEY)
+    ) || [];
+  } catch (e) {
+    return [];
+  }
+};
+
+
+const saveAppointments = appointments => {
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(appointments)
+  );
+};
+
+
+const todayISO = () => {
+  const d = new Date();
+  return d.toISOString().slice(0, 10);
+};
+
+
+const escapeHTML = value =>
+  String(value).replace(
+    /[&<>"']/g,
+    m => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    }[m])
+  );
+
+
+function scrollToId(id) {
+  document
+    .getElementById(id)
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+
+function showView(view) {
+
+  const client =
+    document.getElementById("clienteView");
+
+  const barber =
+    document.getElementById("barberoView");
+
+  const clientTab =
+    document.getElementById("clientTab");
+
+  const barberTab =
+    document.getElementById("barberTab");
+
+
+  client.classList.toggle(
+    "hidden",
+    view !== "cliente"
+  );
+
+  barber.classList.toggle(
+    "hidden",
+    view === "cliente"
+  );
+
+
+  clientTab.classList.toggle(
+    "tab-active",
+    view === "cliente"
+  );
+
+  clientTab.classList.toggle(
+    "text-gray-400",
+    view !== "cliente"
+  );
+
+
+  barberTab.classList.toggle(
+    "tab-active",
+    view === "barbero"
+  );
+
+  barberTab.classList.toggle(
+    "text-gray-400",
+    view === "cliente"
+  );
+
+
+  scrollToId("reservas");
+}
+
+
+function selectService(element) {
+
+  document
+    .querySelectorAll(".service-card")
+    .forEach(card =>
+      card.classList.remove("selected")
+    );
+
+  element.classList.add("selected");
+
+  document.getElementById("service").value =
+    element.dataset.service;
+}
+
+
+function createTimeSlots() {
+
+  const select =
+    document.getElementById("time");
+
+  select.innerHTML =
+    '<option value="">Seleccionar hora</option>';
+
+  for (let hour = 10; hour <= 20; hour++) {
+
+    for (let minute = 0; minute < 60; minute += 30) {
+
+      if (hour === 20 && minute > 30) {
+        continue;
+      }
+
+      const time =
+        `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+
+      const option =
+        document.createElement("option");
+
+      option.value = time;
+      option.textContent = time;
+
+      select.appendChild(option);
+    }
+  }
+}
+
+
+function isAvailable(date, time) {
+
+  return !getAppointments().some(
+    appointment =>
+      appointment.date === date &&
+      appointment.time === time &&
+      appointment.status !== "cancelled"
+  );
+}
+
+
+function refreshTimes() {
+
+  const date =
+    document.getElementById("date").value;
+
+  [
+    ...document.getElementById("time").options
+  ].forEach(option => {
+
+    if (!option.value) return;
+
+    const available =
+      isAvailable(date, option.value);
+
+    option.disabled = !available;
+
+    option.textContent =
+      available
+        ? option.value
+        : option.value + " · Ocupado";
+  });
+}
+
+
+function formatDate(date) {
+
+  return new Date(
+    date + "T12:00:00"
+  ).toLocaleDateString(
+    "es-ES",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    }
+  );
+}
+
+
+document
+  .getElementById("bookingForm")
+  .addEventListener("submit", event => {
+
+    event.preventDefault();
+
+
+    const service =
+      document.getElementById("service").value;
+
+    const date =
+      document.getElementById("date").value;
+
+    const time =
+      document.getElementById("time").value;
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const phone =
+      document.getElementById("phone").value.trim();
+
+
+    if (
+      !service ||
+      !date ||
+      !time ||
+      !name ||
+      !phone
+    ) {
+      alert("Completa todos los campos.");
+      return;
+    }
+
+
+    if (!isAvailable(date, time)) {
+      alert("Esa hora ya está ocupada.");
+      return;
+    }
+
+
+    const appointment = {
+
+      id:
+        crypto.randomUUID
+          ? crypto.randomUUID()
+          : Date.now().toString(36),
+
+      service,
+
+      price:
+        SERVICES[service].price,
+
+      duration:
+        SERVICES[service].duration,
+
+      date,
+
+      time,
+
+      name,
+
+      phone,
+
+      status: "pending",
+
+      createdAt:
+        new Date().toISOString()
+    };
+
+
+    const appointments =
+      getAppointments();
+
+    appointments.push(appointment);
+
+    saveAppointments(appointments);
+
+
+    document.getElementById("summary").innerHTML = `
+
+      <div>
+        <span class="text-gray-500">
+          Servicio:
+        </span>
+        ${escapeHTML(service)}
+      </div>
+
+      <div>
+        <span class="text-gray-500">
+          Fecha:
+        </span>
+        ${formatDate(date)}
+      </div>
+
+      <div>
+        <span class="text-gray-500">
+          Hora:
+        </span>
+        ${time}
+      </div>
+
+      <div>
+        <span class="text-gray-500">
+          Cliente:
+        </span>
+        ${escapeHTML(name)}
+      </div>
+
+      <div>
+        <span class="text-gray-500">
+          Precio:
+        </span>
+
+        <span class="text-gold-400">
+          ${appointment.price} €
+        </span>
+      </div>
+    `;
+
+
+    document
+      .getElementById("modal")
+      .classList.remove("hidden");
+
+
+    event.target.reset();
+
+
+    document
+      .querySelectorAll(".service-card")
+      .forEach(card =>
+        card.classList.remove("selected")
+      );
+
+
+    document.getElementById("service").value = "";
+
+
+    createTimeSlots();
+
+    refreshTimes();
+  });
+
+
+function closeModal() {
+
+  document
+    .getElementById("modal")
+    .classList.add("hidden");
+}
+
+
+document
+  .getElementById("pinForm")
+  .addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const pin =
+      document.getElementById("pin").value;
+
+
+    if (pin === "1234") {
+
+      sessionStorage.setItem(
+        "barber",
+        "1"
+      );
+
+      document
+        .getElementById("pinError")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("barberLogin")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("barberDashboard")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("filterDate")
+        .value = todayISO();
+
+
+      renderAppointments();
+
+    } else {
+
+      document
+        .getElementById("pinError")
+        .classList.remove("hidden");
+    }
+  });
+
+
+function logout() {
+
+  sessionStorage.removeItem("barber");
+
+  document
+    .getElementById("barberDashboard")
+    .classList.add("hidden");
+
+  document
+    .getElementById("barberLogin")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("pin")
+    .value = "";
+}
+
+
+function today() {
+
+  document
+    .getElementById("filterDate")
+    .value = todayISO();
+
+  renderAppointments();
+}
+
+
+function getStatus(status) {
+
+  if (status === "completed") {
+    return [
+      "Completada",
+      "bg-green-500/10 text-green-400"
+    ];
+  }
+
+  if (status === "cancelled") {
+    return [
+      "Cancelada",
+      "bg-red-500/10 text-red-400"
+    ];
+  }
+
+  return [
+    "Pendiente",
+    "bg-gold-500/10 text-gold-400"
+  ];
+}
+
+
+function renderAppointments() {
+
+  const date =
+    document.getElementById("filterDate").value ||
+    todayISO();
+
+
+  const appointments =
+    getAppointments()
+      .filter(
+        appointment =>
+          appointment.date === date
+      )
+      .sort(
+        (a, b) =>
+          a.time.localeCompare(b.time)
+      );
+
+
+  document.getElementById("total")
+    .textContent =
+      appointments.length;
+
+
+  document.getElementById("pending")
+    .textContent =
+      appointments.filter(
+        appointment =>
+          appointment.status === "pending"
+      ).length;
+
+
+  document.getElementById("completed")
+    .textContent =
+      appointments.filter(
+        appointment =>
+          appointment.status === "completed"
+      ).length;
+
+
+  document.getElementById("agendaSummary")
+    .textContent =
+      `${formatDate(date)} · ${
+        appointments.length
+      } ${
+        appointments.length === 1
+          ? "cita"
+          : "citas"
+      }`;
+
+
+  const container =
+    document.getElementById("appointments");
+
+
+  if (!appointments.length) {
+
+    container.innerHTML = `
+      <div class="rounded-2xl border border-dashed border-white/10 p-10 text-center text-gray-500">
+        No hay citas para este día.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  container.innerHTML =
+    appointments
+      .map(appointment => {
+
+        const status =
+          getStatus(
+            appointment.status
+          );
+
+
+        const cleanPhone =
+          appointment.phone.replace(
+            /\D/g,
+            ""
+          );
+
+
+        const whatsappPhone =
+          cleanPhone.length === 9
+            ? "34" + cleanPhone
+            : cleanPhone;
+
+
+        const message =
+          encodeURIComponent(
+            `Hola ${appointment.name}, te contactamos desde Barbería Marrakech sobre tu cita del ${formatDate(appointment.date)} a las ${appointment.time}.`
+          );
+
+
+        return `
+
+          <article
+            class="rounded-2xl border border-white/10 bg-[#111] p-5"
+          >
+
+            <div
+              class="flex flex-col lg:flex-row lg:items-center gap-5"
+            >
+
+              <div class="lg:w-24">
+
+                <div class="text-3xl font-semibold">
+                  ${appointment.time}
+                </div>
+
+                <div class="text-xs text-gray-600 mt-1">
+                  ${appointment.duration} min
+                </div>
+
+              </div>
+
+
+              <div class="flex-1">
+
+                <div class="flex flex-wrap gap-2 items-center">
+
+                  <b>
+                    ${escapeHTML(
+                      appointment.service
+                    )}
+                  </b>
+
+                  <span class="text-gold-400">
+                    ${appointment.price} €
+                  </span>
+
+                  <span
+                    class="${status[1]} px-2.5 py-1 rounded-full text-[11px]"
+                  >
+                    ${status[0]}
+                  </span>
+
+                </div>
+
+
+                <div class="mt-3 text-sm text-gray-300">
+
+                  ${escapeHTML(
+                    appointment.name
+                  )}
+
+                  ·
+
+                  <span class="text-gray-500">
+                    ${escapeHTML(
+                      appointment.phone
+                    )}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="flex flex-wrap gap-2">
+
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://wa.me/${whatsappPhone}?text=${message}"
+                  class="px-3.5 py-2.5 rounded-xl bg-green-500/10 text-green-400 text-sm"
+                >
+                  WhatsApp
+                </a>
+
+
+                ${
+                  appointment.status === "pending"
+
+                  ?
+
+                  `
+
+                    <button
+                      onclick="changeStatus('${appointment.id}','completed')"
+                      class="px-3.5 py-2.5 rounded-xl bg-green-500/10 text-green-400 text-sm"
+                    >
+                      ✓ Completar
+                    </button>
+
+
+                    <button
+                      onclick="changeStatus('${appointment.id}','cancelled')"
+                      class="px-3.5 py-2.5 rounded-xl bg-red-500/10 text-red-400 text-sm"
+                    >
+                      Cancelar
+                    </button>
+
+                  `
+
+                  :
+
+                  ""
+                }
+
+              </div>
+
+            </div>
+
+          </article>
+        `;
+      })
+      .join("");
+}
+
+
+function changeStatus(id, newStatus) {
+
+  const appointments =
+    getAppointments();
+
+
+  const appointment =
+    appointments.find(
+      item =>
+        item.id === id
+    );
+
+
+  if (appointment) {
+
+    appointment.status =
+      newStatus;
+
+    saveAppointments(
+      appointments
+    );
+
+    renderAppointments();
+  }
+}
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    document.getElementById("year")
+      .textContent =
+        new Date().getFullYear();
+
+
+    createTimeSlots();
+
+
+    const dateInput =
+      document.getElementById("date");
+
+
+    dateInput.min =
+      todayISO();
+
+
+    dateInput.value =
+      todayISO();
+
+
+    dateInput.addEventListener(
+      "change",
+      refreshTimes
+    );
+
+
+    document
+      .getElementById("time")
+      .addEventListener(
+        "change",
+        refreshTimes
+      );
+
+
+    if (
+      sessionStorage.getItem("barber") === "1"
+    ) {
+
+      document
+        .getElementById("barberLogin")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("barberDashboard")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("filterDate")
+        .value = todayISO();
+
+
+      renderAppointments();
+    }
+
+
+    refreshTimes();
+  }
+);
+
+</script>
+
+</body>
+</html>
+
